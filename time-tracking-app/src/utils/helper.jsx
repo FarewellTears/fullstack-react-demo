@@ -1,10 +1,10 @@
-import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const pad = (numberString, size) => {
   let padded = numberString;
   while (padded.length < size) padded = `0${padded}`;
   return padded;
-}
+};
 
 const millisecondsToHuman = (ms) => {
   const seconds = Math.floor((ms / 1000) % 60);
@@ -26,4 +26,15 @@ export const renderElapsedString = (elapsed, runningSince) => {
     totalElapsed += Date.now() - runningSince;
   }
   return millisecondsToHuman(totalElapsed);
+};
+
+export const newTimer = (attrs = {}) => {
+  const timer = {
+    title: attrs.title || "Timer",
+    project: attrs.project || "Project",
+    id: uuidv4(), // eslint-disable-line no-undef
+    elapsed: 0,
+  };
+
+  return timer;
 };

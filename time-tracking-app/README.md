@@ -12,5 +12,7 @@ cd voting-app
 2. 安装依赖
 
 ```
-npm install -D tailwindcss postcss autoprefixer sass
-`
+npm install -D tailwindcss postcss autoprefixer sass eslint-plugin-react-hooks 
+npm install uuid
+```
+

@@ -1,23 +1,25 @@
 import React from "react";
 import { EditableTimer } from "@/components";
 
-const EditableTimerList = () => {
+const EditableTimerList = (props) => {
+  const { timers, onFormSubmit, onTrashClick, onStartClick, onStopClick } =
+    props;
   return (
-    <div className='flex flex-col justify-center m-4'>
-      <EditableTimer
-        title='Learn React'
-        project='Web Domination'
-        elapsed='8986300'
-        runningSince={null}
-        editFormOpen={false}
-      />
-      <EditableTimer
-        title='Learn extreme ironing'
-        project='World Domination'
-        elapsed='3890985'
-        runningSince={null}
-        editFormOpen={true}
-      />
+    <div className='flex flex-col justify-center m-4 mb-0'>
+      {timers.map((timer) => (
+        <EditableTimer
+          key={timer.id}
+          id={timer.id}
+          title={timer.title}
+          project={timer.project}
+          elapsed={timer.elapsed}
+          runningSince={timer.runningSince}
+          onFormSubmit={onFormSubmit}
+          onTrashClick={onTrashClick}
+          onStartClick={onStartClick}
+          onStopClick={onStopClick}
+        />
+      ))}
     </div>
   );
 };
